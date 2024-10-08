@@ -10,7 +10,7 @@ const ProtectedHomePage = ({children}) => {
 
  if (!user || user === null) {
   console.log('user not logged in')
-   return Navigate({to: 'auth/signin'})
+  throw redirect("auth/signin");
  }  
  return (
     children
