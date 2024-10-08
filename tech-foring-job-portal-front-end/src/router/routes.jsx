@@ -13,14 +13,16 @@ import EditForm from '../components/EditForm';
 
 const routes =  createBrowserRouter([
     {
-      path: "/",
+      path: "/views",
       element: <ProtectedHomePage><App/></ProtectedHomePage>,
       
       children: [
         {
-          path: "views",
           element: <JobList/>
+          index : true  
         },
+        ],
+    },
         {
           path: 'create',
           element: <AddJob/>
@@ -29,8 +31,8 @@ const routes =  createBrowserRouter([
           path: "edit-job/:id",
           element: <EditForm/>
         },
-        ]
-    },
+        
+    
     {
         path: "/auth/signin",
         element: <AuthPage/>,
