@@ -71,7 +71,7 @@ const JobList = () => {
           sx={{
             display: "flex",
             flexDirection: "column",
-            gap: -1,
+            gap: 1,
             alignItems: "center",
           }}
         >

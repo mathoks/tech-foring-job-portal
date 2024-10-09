@@ -15,7 +15,7 @@ const useCrud = (baseUrl) => {
     setLoading(true);
     try {
     //   await axios.delete(`${baseUrl}/${id}`);
-    const response = await axios.delete(`http://localhost:4000/api/v1/jobs/delete-job/?prodId=${id}`, { withCredentials: true });  
+    const response = await axios.delete(`https://tech-foring-job-portal-1.onrender.com/api/v1/jobs/delete-job/?prodId=${id}`, { withCredentials: true });  
     setData(response.data);
     console.log(response.data);
     } catch (error) {
