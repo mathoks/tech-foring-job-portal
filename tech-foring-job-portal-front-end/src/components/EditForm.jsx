@@ -4,78 +4,73 @@ import useCrud from '../hooks/useCrud';
 import SelectJob from './SelectJob';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useParams } from 'react-router-dom';
+import { Form, useActionData, useFormAction, useParams } from 'react-router-dom';
+import axios from 'axios';
+
+export async  function EdditJob({request}) {
+    
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
+    
+   const res = await axios.patch('https://tech-foring-job-portal-1.onrender.com/api/v1/jobs/update-job', data, {withCredentials: true}).then((res) => {
+       return { data: res.data, error: null }
+    }).catch((err) => {
+        console.log(err)
+        return { error: err.response.data, data: null }
+        
+    });
+    
+        return res
+    
+}
 
 const EditForm = () => {
-    const [job_title, setJobTitle] = useState('');
-    const [error, setError] = useState(null);
-    const [job_description, setJobDesc] = useState('');
-    const {updateRecord, data, error: errs} = useCrud();
+   const info = useActionData();
     const notify = (mes) => toast(mes);
     const { id } = useParams();
-    console.log(id)
+    
     useEffect(() => {
-        if (data) {
+        if (info?.data) {
             notify("successfully edited added");
         }
-        if (errs) {
-            console.log(errs)
-            notify(errs.error);
+        if (info?.error) {
+            console.log(info?.error)
+            notify(info?.error);
         }
-    }, [data, errs]);
+    }, [info?.data, info?.error]);
 
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      const formData = new FormData(event.target);
-      console.log(formData)
-      const data = {
-        title: formData.get('job_title'),
-        description: formData.get('job_description'),
-        categoryId: formData.get('job_type'),
-        job_id: formData.get('job_id')
-         };
-     
-       console.log(data, error)
-      
-        setError(null);
-        updateRecord(data);
-        // Proceed with sign-up logic
     
-    };
   return (
     <Container
     maxWidth="xs"
     sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
   >
   <ToastContainer />
-    <form onSubmit={handleSubmit}>
+    <Form method='patch'>
    
       <TextField    
         label="Job Title"
         variant="outlined"
         fullWidth
         sx={{ marginBottom: 2 }}
-        value={job_title}
-        onChange={(event) => setJobTitle(event.target.value)}
+        
         helperText="Enter the job title"
-        name='job_title'
+        name='title'
       />
       <TextField    
         label="Job Description"
         variant="outlined"
         fullWidth
         sx={{ marginBottom: 2 }}
-        value={job_description}
-        onChange={(event) => setJobDesc(event.target.value)}
         helperText="Enter the job description"
-        name='job_description'
+        name='description'
       />
       <input type="hidden" name="job_id" defaultValue={id} />
       <SelectJob/>
-      {error && (
+      {info?.error && (
         <Box sx={{minWidth: 318}}>
         <Typography color="error" gutterBottom>
-          {error}
+          {info?.error}
         </Typography>
         </Box>
       )}
@@ -87,7 +82,7 @@ const EditForm = () => {
       >
         update Job
       </Button>
-    </form>
+    </Form>
   </Container>
   )
 }
