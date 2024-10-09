@@ -23,7 +23,7 @@ export default function SelectJob() {
           }}
          
         >{ data?.map(({id, type}) => 
-          <option key={id}  value={id}>{type.replace(/_/g, "")}</option>
+          <option key={id}  value={id}>{type.replace(/_/g, " ")}</option>
         )}
         </NativeSelect>
       </FormControl>

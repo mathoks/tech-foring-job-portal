@@ -71,7 +71,7 @@ const JobList = () => {
           sx={{
             display: "flex",
             flexDirection: "column",
-            gap: -2,
+            gap: -1,
             alignItems: "center",
           }}
         >
@@ -111,7 +111,7 @@ const JobList = () => {
                     width: "100%",
                   }}
                 >
-                  <Typography>{type}</Typography>
+                  <Typography>{type.replace(/_/g, " ")}</Typography>
                 </AccordionSummary>
                 <AccordionDetails
                   sx={{
