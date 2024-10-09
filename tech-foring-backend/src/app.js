@@ -58,4 +58,8 @@ app.use(cors(corsOption))
 app.use("/api/v1", apiV1);
 app.use("/api/v1/verify", accessTokenMiddleware);
 app.use('/api/v1/users/verify/:token', tokenParser)
+app.use((err, req, res, next) => {
+    console.log(err); // Access error message here
+    res.status(500).send(err);
+  });
 module.exports = app

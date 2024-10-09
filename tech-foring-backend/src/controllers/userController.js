@@ -29,15 +29,15 @@ const {
         hashedPasswords,
         username,
       );
-      if (createdUser) {
-        res
+       if (createdUser) {
+      return  res
           .status(201)
           .json({ newUser: createdUser, message: "User created successfully" });
       } else {
         throw new Error("User not created");
       }
     } catch (error) {
-      next(error);
+        next(error.message);
     }
   };
   

@@ -31,7 +31,7 @@ const isLogin = async (req, res, next) => {
             }
       
     } catch (error) {
-      next(error);
+      next(error.message );
     }
   }
 
@@ -68,10 +68,11 @@ const userLogin = async (req, res, next) => {
         data: rest,
       });
     } catch (error) {
-            res.status(500).json({
-            status: "failed",
-            message: error.message,
-            data: null, })
+            // res.status(500).json({
+            // status: "failed",
+            // message: error.message,
+            // data: null, })
+            next(error.message);
     }
   };
 

@@ -13,7 +13,7 @@ const checkUserDataInputIsEmpty = async (req, res, next) => {
         next();
       }
     } catch (error) {
-      next(error);
+      next(error.message);
     }
   };
   
@@ -33,7 +33,7 @@ const checkUserDataInputIsEmpty = async (req, res, next) => {
         next();
       }
     } catch (error) {
-      next(error);
+      next(error.message);
     }
   };
   
@@ -64,7 +64,7 @@ const checkUserDataInputIsEmpty = async (req, res, next) => {
         next();
       }
     } catch (error) {
-      next(error);
+      next(error.message);
     }
   };
   
@@ -77,7 +77,7 @@ const checkUserDataInputIsEmpty = async (req, res, next) => {
         next();
       }
     } catch (error) {
-      next(error);
+      next(error.message);
     }
   };
   
@@ -101,8 +101,9 @@ const checkUserDataInputIsEmpty = async (req, res, next) => {
       } else {
         next();
       }
-    } catch (error) {
-      next(error);
+    } catch (error) {  
+       next(error.message);
+       
     }
   };
   
@@ -115,7 +116,7 @@ const checkUserDataInputIsEmpty = async (req, res, next) => {
         next();
       }
     } catch (error) {
-      next(error);
+      next(error.message);
     }
   };
   
