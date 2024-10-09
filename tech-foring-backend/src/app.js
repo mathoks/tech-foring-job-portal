@@ -19,7 +19,7 @@ const oneDay = 1000 * 60 * 60 * 24;
 //     signed: false,
 // }))
 
-const allowedOrigins = ["http://localhost:3000, https://techforing-test.netlify.app"];
+const allowedOrigins = ["https://tech-foring-job-portal-1.onrender.com", "https://techforing-test.netlify.app"];
 const expressOptions = {
   urlencodExtended: true,
   requestSizeLimit: "20mb",
