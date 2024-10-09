@@ -19,7 +19,7 @@ const oneDay = 1000 * 60 * 60 * 24;
 //     signed: false,
 // }))
 
-const allowedOrigins = ["http://localhost:3000, "];
+const allowedOrigins = ["http://localhost:3000, https://techforing-test.netlify.app"];
 const expressOptions = {
   urlencodExtended: true,
   requestSizeLimit: "20mb",
