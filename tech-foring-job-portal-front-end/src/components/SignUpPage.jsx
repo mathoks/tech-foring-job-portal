@@ -36,29 +36,6 @@ function SignUpPage() {
   const data = useActionData()
 
  
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [error, setError] = useState(null);
-  // const { addUser, user, error: errs } = useAuth();
-  // const nav = useNavigate();
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-
-  //   console.log("Sign-up attempted:", { username, password });
-
-  //   const formData = new FormData(event.target);
-  //   const data = {
-  //     username: formData.get("username"),
-  //     password: formData.get("password"),
-  //   };
-  //   if (!data.username || !data.password) {
-  //     setError("Please fill in both fields.");
-  //   } else {
-  //     setError(null);
-  //     addUser(data);
-  //     // Proceed with sign-up logic
-  //   }
-  // };
 
   useEffect(() => {
     if (data?.error) {
@@ -87,8 +64,8 @@ function SignUpPage() {
           variant="outlined"
           fullWidth
           sx={{ marginBottom: 2 }}
-          // value={username}
-          // onChange={(event) => setUsername(event.target.value)}
+          helperText = "min of 8 characters must contain an uppercase, number and a special character"
+
         />
         <TextField
           label="Password"
@@ -96,9 +73,10 @@ function SignUpPage() {
           variant="outlined"
           fullWidth
           sx={{ marginBottom: 2 }}
-          // value={password}
           name="password"
-          // onChange={(event) => setPassword(event.target.value)}
+          helperText = " min of 8 characters"
+
+         
         />
         {data?.error && (
           <Typography color="error" gutterBottom>
