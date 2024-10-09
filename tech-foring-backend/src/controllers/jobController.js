@@ -94,7 +94,7 @@ const deleteJobs = async (req, res, next) => {
         }
         res
           .status(200)
-          .json({ jobRem, message: "Product deleted successfully" });
+          .json({ jobRem, message: "Product deleted successfully" }).redirect('/');
       } catch (error) {
         next(error.message);
       }
