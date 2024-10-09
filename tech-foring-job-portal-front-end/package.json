@@ -1,5 +1,6 @@
 {
   "name": "tech-foring-job-portal-front-end",
+  "homepage": "/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
