@@ -1,24 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   Container,
   TextField,
   Button,
   Typography,
-  styled,
 } from "@mui/material";
-import { useAuth } from "../hooks/useAuth";
-import { Form, redirect, useActionData, useNavigate } from "react-router-dom";
+import { Form, redirect, useActionData } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
-
+const baseUrl = 'https://tech-foring-job-portal-1.onrender.com'
 export async  function signUp({request}) {
     
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
- const res = await axios.post('https://tech-foring-job-portal-1.onrender.com/api/v1/users/create-user', data, {withCredentials: true}).then((res) => {
+ const res = await axios.post(`${baseUrl}/api/v1/users/create-user`, data, {withCredentials: true}).then((res) => {
      return { user: res.data.newUser.username, error: null }
   }).catch((err) => {
       //  throw new Error(err.response.data.message) 

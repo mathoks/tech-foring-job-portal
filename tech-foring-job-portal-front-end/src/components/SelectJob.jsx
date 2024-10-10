@@ -4,8 +4,10 @@ import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
 import useFetch from '../hooks/useFetch';
+
+const baseUrl = 'https://tech-foring-job-portal-1.onrender.com'
 export default function SelectJob() {
-    const { data, error, loading } = useFetch('https://tech-foring-job-portal-1.onrender.com/api/v1/jobs/views');
+    const { data, error, loading } = useFetch(`${baseUrl}/api/v1/jobs/views`, { withCredentials: true });
     if (loading) return <p>Loading...</p>;
     if (error) return <p>cant load category</p>;
     return (

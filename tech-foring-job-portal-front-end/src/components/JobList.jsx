@@ -17,9 +17,10 @@ import useCrud from "../hooks/useCrud";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const baseUrl = 'https://tech-foring-job-portal-1.onrender.com'
 export const getList = async () => {
   const list = await axios
-    .get("https://tech-foring-job-portal-1.onrender.com/api/v1/jobs/views", { withCredentials: true })
+    .get(`${baseUrl}/api/v1/jobs/views`, { withCredentials: true })
     .then((res) => {
       console.log(res.data);
       return res.data.Jobs;

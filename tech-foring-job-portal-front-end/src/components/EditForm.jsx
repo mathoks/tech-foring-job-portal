@@ -11,17 +11,14 @@ export async  function EdditJob({request}) {
     
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
-    
-   const res = await axios.patch(`${baseUrl}/api/v1/jobs/update-job`, data, {withCredentials: true, transformRequest:[(data)=>{
     const filteredObj = Object.entries(data).reduce((acc, a) => {
-         if (a[1] !== null && a[1] !== undefined && a[1] !== "") {
-          acc[a[0]] = a[1];
-     }
-        return acc;
-      }, {});
-      return filteredObj
-   }
-   ]}).then((res) => {
+        if (a[1] !== null && a[1] !== undefined && a[1] !== "") {
+         acc[a[0]] = a[1];
+    }
+       return acc;
+     }, {});
+   
+   const res = await axios.patch(`${baseUrl}/api/v1/jobs/update-job`, filteredObj, {withCredentials: true }).then((res) => {
        return { data: res.data, error: null }
     }).catch((err) => {
         console.log(err)

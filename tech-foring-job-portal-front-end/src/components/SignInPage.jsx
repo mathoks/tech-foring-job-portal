@@ -12,12 +12,13 @@ import {
 } from "react-router-dom";
 import axios from "axios";
 
+const baseUrl = 'https://tech-foring-job-portal-1.onrender.com'
 export async function signIn({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
   const res = await axios
     .post(
-      "https://tech-foring-job-portal-1.onrender.com/api/v1/auth/login",
+      `${baseUrl}/api/v1/auth/login`,
       data,
       { withCredentials: true }
     )
