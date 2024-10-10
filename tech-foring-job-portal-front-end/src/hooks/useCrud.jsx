@@ -2,14 +2,15 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const useCrud = (baseUrl) => {
+const baseUrl = 'https://tech-foring-job-portal-1.onrender.com'
+const useCrud = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   
   
-const baseUrl = 'https://tech-foring-job-portal-1.onrender.com'
+
   // Delete
   const deleteRecord = async (id) => {
     setLoading(true);
