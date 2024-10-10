@@ -108,14 +108,8 @@ const updateJobs = async (req, res, next) => {
   const token = req.cookies.token;
   const userInfo = getUserDataFromToken(token);
   const { job_id, ...jobData } = await req.body;
-  const filteredObj = Object.entries(jobData).reduce((acc, a) => {
-    console.log(a);
-     if (a[1] !== null && a[1] !== undefined && a[1] !== "") {
-      acc[a[0]] = a[1];
- }
-    return acc;
-  }, {});
-  console.log(filteredObj, job_id);
+  
+//   console.log(filteredObj, job_id);
   try {
     if (userInfo[0] !== null) {
       try {
