@@ -72,7 +72,7 @@ function SignInPage() {
           sx={{ width: "100%", marginTop: 2 }}
           disabled={Navigate.state === "submitting" || Navigate.state === "loading"} 
         >
-                  {Navigate.state === 'submitting' ? 'Please wait...' : Navigate.state === 'loading' ? <CircularProgress size={40} sx={{color: 'white'}} /> : 'Sign In'} 
+                  {Navigate.state === 'submitting' ? 'Please wait...' : Navigate.state === 'loading' ? <CircularProgress size={30} sx={{color: 'white'}} /> : 'Sign In'} 
 
         </Button>
       </Form>
