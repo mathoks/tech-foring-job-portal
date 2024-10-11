@@ -78,7 +78,7 @@ function SignInPage() {
       </Form>
       <Typography variant="body2" sx={{ marginTop: 2 }}>
         don't have an account ?{" "}
-        <Button variant="text"  onClick={() => navigate("/auth/signup")}>Sign In</Button>
+        <Button variant="text"  onClick={() => navigate("/auth/signup")}>Sign Up</Button>
       </Typography>
     </Container>
   );
