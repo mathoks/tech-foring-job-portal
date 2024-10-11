@@ -1,6 +1,6 @@
 // useFetch.js
-import axios from 'axios';
-import { useState, useEffect } from 'react';
+import axios from '../api/axios';
+import { useState, useEffect} from 'react';
 
 const useFetch = (url, options = {}) => {
   const [data, setData] = useState(null);
@@ -8,11 +8,13 @@ const useFetch = (url, options = {}) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let Ismounted = true;
+const controller = new AbortController()
     const fetchData = async () => {
       try {
-        const response = await axios.get(url, { withCredentials: true, ...options });
-        setData(response.data.Jobs);
-        console.log(response.data.Jobs);
+        const response = await axios.get(url, { withCredentials: true, signal: controller.signal, ...options });
+       Ismounted && setData(response.data.Jobs);
+        
       } catch (error) {
         setError(error);
       } finally {
@@ -20,6 +22,11 @@ const useFetch = (url, options = {}) => {
       }
     };
     fetchData();
+
+    return ()=>{
+        Ismounted = false;
+        controller.abort()
+    }
   }, [url]);
 
   return { data, error, loading };

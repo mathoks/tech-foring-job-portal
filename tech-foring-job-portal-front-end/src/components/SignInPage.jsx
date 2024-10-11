@@ -4,21 +4,23 @@ import {
   TextField,
   Button,
   Typography,
+  CircularProgress,
 } from "@mui/material";
 import {
   Form,
   redirect,
   useNavigate,
+  useNavigation,
 } from "react-router-dom";
-import axios from "axios";
+import axios from "../api/axios";
 
-const baseUrl = 'https://tech-foring-job-portal-1.onrender.com'
+
 export async function signIn({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
   const res = await axios
     .post(
-      `${baseUrl}/api/v1/auth/login`,
+      `/api/v1/auth/login`,
       data,
       { withCredentials: true }
     )
@@ -37,7 +39,7 @@ export async function signIn({ request }) {
 
 function SignInPage() {
   const navigate = useNavigate();
-
+    const Navigate = useNavigation()
   return (
     <Container
       maxWidth="xs"
@@ -74,9 +76,8 @@ function SignInPage() {
       </Form>
       <Typography variant="body2" sx={{ marginTop: 2 }}>
         don't have an account ?{" "}
-        <Button variant="text" onClick={() => navigate("/auth/signup")}>
-          SignUp
-        </Button>
+        <Button disabled={Navigate.state === "submitting" || Navigate.state === "loading"} variant="text"  onClick={() => navigate("/auth/signup")}>
+        {Navigate.state === 'submitting' ? 'Please wait...' : Navigate.state === 'loading' ? <CircularProgress size={40} sx={{color: 'white'}} /> : 'Sign In'}        </Button>
       </Typography>
     </Container>
   );

@@ -4,9 +4,10 @@ import SelectJob from './SelectJob';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Form, useActionData, useParams } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../api/axios';
 
-const baseUrl = 'https://tech-foring-job-portal-1.onrender.com'
+
+
 export async  function EdditJob({request}) {
     
     const formData = await request.formData();
@@ -18,7 +19,7 @@ export async  function EdditJob({request}) {
        return acc;
      }, {});
    
-   const res = await axios.patch(`${baseUrl}/api/v1/jobs/update-job`, filteredObj, {withCredentials: true }).then((res) => {
+   const res = await axios.patch(`/api/v1/jobs/update-job`, filteredObj, {withCredentials: true }).then((res) => {
        return { data: res.data, error: null }
     }).catch((err) => {
         console.log(err)

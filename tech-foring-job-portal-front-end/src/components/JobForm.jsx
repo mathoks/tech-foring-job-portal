@@ -3,15 +3,14 @@ import React, { useEffect } from 'react'
 import SelectJob from './SelectJob';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
+import axios from '../api/axios';
 import { Form, useActionData } from 'react-router-dom';
 
-const baseUrl = 'https://tech-foring-job-portal-1.onrender.com'
 export async  function AddNewJob({request}) {
     
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
-   const res = await axios.post(`${baseUrl}/api/v1/jobs/add-job`, data, {withCredentials: true}).then((res) => {
+   const res = await axios.post(`/api/v1/jobs/add-job`, data, {withCredentials: true}).then((res) => {
        return { data: res.data, error: null }
     }).catch((err) => {
         console.log(err)

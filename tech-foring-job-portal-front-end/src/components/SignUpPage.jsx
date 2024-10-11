@@ -4,19 +4,20 @@ import {
   TextField,
   Button,
   Typography,
+  CircularProgress,
 } from "@mui/material";
-import { Form, redirect, useActionData } from "react-router-dom";
+import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
+import axios from "../api/axios";
 
-const baseUrl = 'https://tech-foring-job-portal-1.onrender.com'
+
 export async  function signUp({request}) {
     
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
- const res = await axios.post(`${baseUrl}/api/v1/users/create-user`, data, {withCredentials: true}).then((res) => {
+ const res = await axios.post(`/api/v1/users/create-user`, data, {withCredentials: true}).then((res) => {
      return { user: res.data.newUser.username, error: null }
   }).catch((err) => {
       //  throw new Error(err.response.data.message) 
@@ -32,7 +33,7 @@ export async  function signUp({request}) {
 function SignUpPage() {
    const notify = (mes) => toast(mes);
   const data = useActionData()
-
+  const Navigate = useNavigation()
  
 
   useEffect(() => {
@@ -86,8 +87,9 @@ function SignUpPage() {
           variant="contained"
           color="primary"
           sx={{ width: "100%", marginTop: 2 }}
+          disabled= {Navigate.state === "submitting" || Navigate.state === 'loading'}
         >
-          Create Account
+          { Navigate.state === 'submitting' ? 'Please wait...' : Navigate.state === 'loading' ? <CircularProgress size={40} sx={{color: 'white'}} /> : 'Create Account'}
         </Button>
       </Form>
     </Container>

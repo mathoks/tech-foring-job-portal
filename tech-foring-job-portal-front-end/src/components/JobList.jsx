@@ -11,16 +11,15 @@ import AddIcon from "@mui/icons-material/Add";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import axios from "axios";
+import axios from '../api/axios';
 import { useLoaderData, useNavigate } from "react-router-dom";
 import useCrud from "../hooks/useCrud";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const baseUrl = 'https://tech-foring-job-portal-1.onrender.com'
 export const getList = async () => {
   const list = await axios
-    .get(`${baseUrl}/api/v1/jobs/views`, { withCredentials: true })
+    .get(`/api/v1/jobs/views`, { withCredentials: true })
     .then((res) => {
       console.log(res.data);
       return res.data.Jobs;
