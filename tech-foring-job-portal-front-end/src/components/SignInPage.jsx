@@ -70,14 +70,15 @@ function SignInPage() {
           variant="contained"
           color="primary"
           sx={{ width: "100%", marginTop: 2 }}
+          disabled={Navigate.state === "submitting" || Navigate.state === "loading"} 
         >
-          Sign In
+                  {Navigate.state === 'submitting' ? 'Please wait...' : Navigate.state === 'loading' ? <CircularProgress size={40} sx={{color: 'white'}} /> : 'Sign In'} 
+
         </Button>
       </Form>
       <Typography variant="body2" sx={{ marginTop: 2 }}>
         don't have an account ?{" "}
-        <Button disabled={Navigate.state === "submitting" || Navigate.state === "loading"} variant="text"  onClick={() => navigate("/auth/signup")}>
-        {Navigate.state === 'submitting' ? 'Please wait...' : Navigate.state === 'loading' ? <CircularProgress size={40} sx={{color: 'white'}} /> : 'Sign In'}        </Button>
+        <Button variant="text"  onClick={() => navigate("/auth/signup")}>Sign In</Button>
       </Typography>
     </Container>
   );
