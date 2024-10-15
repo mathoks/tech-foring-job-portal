@@ -62,8 +62,9 @@ function SignUpPage() {
           name="username"
           variant="outlined"
           fullWidth
+          required 
           sx={{ marginBottom: 2 }}
-          helperText = "min of 8 characters must contain an uppercase, number and a special character"
+          helperText = " min of 8 characters"
 
         />
         <TextField
@@ -73,7 +74,9 @@ function SignUpPage() {
           fullWidth
           sx={{ marginBottom: 2 }}
           name="password"
-          helperText = " min of 8 characters"
+          required 
+          helperText = "min of 8 characters must contain an uppercase, number and a special character"
+          
 
          
         />
