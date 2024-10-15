@@ -54,7 +54,7 @@ function SignUpPage() {
     >
       <ToastContainer />
       <Typography variant="h4" component="h2" gutterBottom>
-        Create an Account
+        Sign Up
       </Typography>
       <Form method="post">
         <TextField
