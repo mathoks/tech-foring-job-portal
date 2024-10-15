@@ -132,6 +132,7 @@ const JobList = () => {
                           gap: 4,
                           width: "100%",
                           alignItems: "center",
+                          pb:2
                         }}
                       >
                         <Typography variant="title" fontWeight={"bold"}>
