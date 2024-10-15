@@ -12,10 +12,10 @@ const Tags = () => {
           metaDescription: "this is the jobs page",
         });
         break;
-      case "/auth/signup":
+      case "/auth/SignUp":
         SEO({ title: "Sign up", metaDescription: "become a member" });
         break;
-      case "/auth/Signin":
+      case "/auth/SignIn":
         SEO({
           title: "Sign in",
           metaDescription: "gain access to more functionality",
