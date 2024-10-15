@@ -55,6 +55,7 @@ function SignInPage() {
           name="username"
           fullWidth
           sx={{ marginBottom: 2 }}
+          required 
         />
         <TextField
           label="Password"
@@ -63,6 +64,7 @@ function SignInPage() {
           name="password"
           fullWidth
           sx={{ marginBottom: 2 }}
+          required 
         />
 
         <Button
