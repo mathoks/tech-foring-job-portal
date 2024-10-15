@@ -6,7 +6,7 @@ const Tags = () => {
   const { pathname } = useLocation();
   useEffect(() => {
     switch (pathname) {
-      case "/vies":
+      case "/views":
         SEO({
           title: "welcome to tecforing",
           metaDescription: "this is the jobs page",
